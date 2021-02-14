@@ -1,0 +1,35 @@
+.DS_Store
+node_modules
+/dist
+
+# env files
+.env
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Local files
+/local
+
+# Editor directories and files
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw*
+
+coverage
+
+.scannerwork
+
+.tsbuildinfo
+
+# https://yarnpkg.com/advanced/qa#which-files-should-be-gitignored
+node_modules
+.yarn/*
+!.yarn/cache
+!.yarn/releases
+!.yarn/plugins
