@@ -1,0 +1,1 @@
+export const DEFAULT_NOT_FOUND_REPLY = "Sorry, couldn't understand this message."
