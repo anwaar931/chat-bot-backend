@@ -83,3 +83,8 @@ Run `make test` in root
 
 -  `8001` service-api
 -  `8002` service-controller
+
+### Swagger
+
+- For service-api `localhost:8001/api-docs`
+- For service-controller `localhost:8002/api-docs`
