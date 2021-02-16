@@ -1,9 +1,8 @@
 const MONGO_DB = 'service-controller'
-const MONGO_DEV_URL = `mongodb://localhost:27017/${MONGO_DB}`
 
-export const PORT: number = <any>process.env.PORT || 8314
+// mongo is mongodb docker container
+const MONGO_DEV_URL = `mongodb://mongo:27017/${MONGO_DB}`
 export const CONFIG = {
-	PORT,
 	MONGO: {
 		URL: process.env.MONGO_DB || MONGO_DEV_URL,
 	},

@@ -1,13 +1,11 @@
-import * as mongoose from 'mongoose'
+import mongoose from 'mongoose'
 import { CONFIG } from './config'
 
 const MONGO_OPTIONS = {
 	useNewUrlParser: true,
 	reconnectTries: Number.MAX_VALUE,
 	reconnectInterval: 1000,
-	useFindAndModify: false,
-	useCreateIndex: true,
-	useUnifiedTopology: true,
+	useCreateIndex: true
 }
 
 mongoose.connect(CONFIG.MONGO.URL, MONGO_OPTIONS)
