@@ -4,7 +4,7 @@ import { createReply, deleteReply, findReply } from '../services/intent-message.
 
 export default (app: Express) => {
 
-    app.post('/reply/intent', async (req: Request, res: Response) => {
+    app.put('/create/reply/intent', async (req: Request, res: Response) => {
         const { message, intentName } = req.body
 
         const resp = await createReply({
@@ -15,7 +15,7 @@ export default (app: Express) => {
         res.send({ success: resp })
     })
 
-    app.delete('/reply/intent', async (req: Request, res: Response) => {
+    app.delete('/delete/reply/intent', async (req: Request, res: Response) => {
         const { intentName } = req.body
 
         const resp = await deleteReply(intentName)
