@@ -1,11 +1,13 @@
 import { Schema, Model, model, Document } from 'mongoose'
 
-export interface IntentMessage extends Document {
+export interface IntentMessage {
     intentName: string
     message: string
 }
 
-const schema = new Schema<IntentMessage>(
+type IntentMessageDocument = IntentMessage & Document
+
+const schema = new Schema<IntentMessageDocument>(
     {
         intentName: { type: String, required: true, index: true },
         message: { type: String, required: true,  },
@@ -15,12 +17,21 @@ const schema = new Schema<IntentMessage>(
     }
 )
 
-const IntentMessageModel: Model<IntentMessage> = model(
+const IntentMessageModel: Model<IntentMessageDocument> = model(
 	'IntentMessage',
 	schema,
 )
 
-export async function findIntentWithReply(intentName: string): Promise<IntentMessage | null> {
+
+export const getNewModelObject = (intentMessage: IntentMessage) => {
+    return {
+        intentName: intentMessage.intentName,
+        message: intentMessage.message
+    }
+}
+
+
+export async function findIntentWithReply(intentName: string): Promise<IntentMessageDocument | null> {
     return await IntentMessageModel.findOne({ intentName }).exec()
 }
 
@@ -30,11 +41,7 @@ export async function createIntentMessage(intentMessage: IntentMessage): Promise
     if(await findIntentWithReply(intentMessage.intentName)) return true
 
     // Creating intent with reply
-
-    const replyForIntent = new IntentMessageModel({
-        intentName: intentMessage.intentName,
-        message: intentMessage.message
-    })
+    const replyForIntent = new IntentMessageModel(getNewModelObject(intentMessage))
 
     await replyForIntent.save()
 
