@@ -5,9 +5,11 @@ import { registerRoutes } from './routes'
 function init() {
     const app = express()
 
+    app.use(express.json())
+
     registerRoutes(app)
 
-    app.listen(8001, '0.0.0.0', () => {
+    app.listen(8002, '0.0.0.0', () => {
         console.log('Service constoller started')
     })
 }
