@@ -16,7 +16,8 @@ There are two NodeJs services, which are running with ExpressJs.
 - These intents which we will add can be used for visitors to receiver replies.
 - If there is no matching intent in DB it will send a default reply.
 
-## Assumptions
+## Assumptions & decisions
+- Didn't add any Authorization in service-api for visitor also no rate-limiting. 
 - Assuming that the requirement is to create a Public API for visitor to receive message and respond with messages depending up on intents from ultimate.ai API.
 - Need to have few example intents with messages in mongo DB for testing the complete functionality.
 - Assuming that **conversation_id** will come from a system where we or visitor is storing the conversations so currently just added a constant.
@@ -42,3 +43,4 @@ Run `make test` in root
 ### Development Port assignments:
 - `8001` service-api
 - `8002` service-controller
+
