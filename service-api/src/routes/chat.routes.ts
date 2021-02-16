@@ -12,7 +12,7 @@ export default (app: Router) => {
 
             res.send({
                 success: true,
-                message: reply
+                reply
             })
         } catch(err) {
             
